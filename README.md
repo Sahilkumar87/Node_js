@@ -77,16 +77,7 @@
 - [ ] Logging, Monitoring, Error tracking
 - [ ] CI/CD basics (GitHub Actions)
 
----
-📁 kgcoding-nodejs-course/
-├── 📁 01-basics/
-├── 📁 02-express-api/
-├── 📁 03-mongodb/
-├── 📁 projects/
-├── 📝 notes/
-└── 📖 README.md
 
----
 ## 🛠️ How to Use This Companion
 
 ### 1️⃣ Watch → Pause → Code → Break → Fix
