@@ -8,7 +8,21 @@ const requstServer = (req, res) => {
     res.setHeader('Constent-type', "text/html");
     res.write('<html>');
     res.write('<head><title>My app</title></head>');
-    res.write('<body><h1> welcome to Home</h1></body>');
+    res.write('<body><h1>Enter Your Details: </h1>');
+    res.write('<form action="/submit-details" method="POST">');
+    res.write('<input type="text" name="username" placeholder="Enter your name"/><br>');
+    res.write('<label for="male">Male</label>');
+    res.write('<input type="radio" id="female" name="gender" value="male"/>');
+    res.write('<label for="female">Female</label>');
+    res.write('<input type="radio" id="female" name="gender" value="female"/><br>');
+    res.write('<input type="submit" value="Submit"/>');
+    
+
+
+
+
+    res.write('</form>');
+    res.write('</body>');
     res.write('</html>');
     return res.end();
     }
