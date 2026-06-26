@@ -1,11 +1,12 @@
 const http = require('http');
+const fs = require('fs');
 
 const requstServer = (req, res) => {
     // console.log("server is started....");
     console.log(req.url, req.method, req.headers);
 
     if(req.url === '/'){
-    res.setHeader('Constent-type', "text/html");
+    res.setHeader('Content-type', "text/html");
     res.write('<html>');
     res.write('<head><title>My app</title></head>');
     res.write('<body><h1>Enter Your Details: </h1>');
@@ -16,18 +17,23 @@ const requstServer = (req, res) => {
     res.write('<label for="female">Female</label>');
     res.write('<input type="radio" id="female" name="gender" value="female"/><br>');
     res.write('<input type="submit" value="Submit"/>');
-    
-
-
-
-
     res.write('</form>');
     res.write('</body>');
     res.write('</html>');
     return res.end();
     }
+
+
+    else if(req.url.toLowerCase() === "/submit-details" && 
+            req.method == "POST"){
+        fs.writeFileSync('user.txt', 'Sahil');
+        res.statusCode = 302;
+        res.setHeader('Location', '/');
+        return res.end();
+
+            }
     else if(req.url === '/product'){
-    res.setHeader('Constent-type', "text/html");
+    res.setHeader('Content-type', "text/html");
     res.write('<html>');
     res.write('<head><title>My First Page</title></head>');
     res.write('<body><h1> Welcome to Product Section </h1></body>');
@@ -35,8 +41,7 @@ const requstServer = (req, res) => {
     return res.end();
     }
     else{
-        
-    res.setHeader('Constent-type', "text/html");
+    res.setHeader('Content-type', "text/html");
     res.write('<html>');
     res.write('<head><title>My First Page</title></head>');
     res.write('<body><h1> Welcome to my Page </h1></body>');
