@@ -1,50 +1,21 @@
+// external module
 const express = require('express');
 const app  = express();
+const path = require('path');
 
+// local module
+const contact = require('./routes/contact');
 
 app.use((req, res, next) => {
-    console.log("first dummy Middleware", req.url, req.method);
-    // res.send(`<p>came from first</p>`);
+    console.log(req.url, req.method);
     next();
 });
 
-app.use((req, res, next) => {
-    console.log("second dummy Middleware", req.url, req.method);
-    // res.send(`<p>came from second</p>`);
-    next();
-});
+app.use(express.urlencoded());
 
-// app.use("/", (req, res, next) => {
-//     console.log("third middleware", req.url, req.method);
-//     // res.send("<h1>came from third</h1>");
-//     next();
-// });
-
-
-app.get("/", (req, res, next) => {
-    console.log("Handling / for GET", req.url, req.method);
-    res.send("<h1>Welcome to complete coding</h1>");
-});
-
-
-
-
-app.get("/contact-us", (req, res, next) => {
-    console.log("handling / contact-us for get", req.url, req.method);
-    res.send(`<h1>please give your details</h1>
-        <form action="/contact-us" method="POST">
-        <input type="text" name="name" placeholder="Enter your name"/>
-        <input type="email" name="email" placeholder="Enter your Email"/>
-        <input type="Submit"/>
-        </form>
-        `);
-});
-
-app.post("/contact-us", (req, res, next) => {
-     console.log("handling / contact-us for POST", req.url, req.method);
-     res.send(`<h1>thanks for your details</h1>`);
-});
-
+app.use(contact);   // use method work 
+// app.get(contact);
+// app.post(contact);
 
 
 
