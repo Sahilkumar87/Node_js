@@ -12,7 +12,7 @@ hostRouter.get("/add/home", (req, res, next) => {
 
 hostRouter.post("/add/home", (req, res, next) => {
     console.log(req.body)
-    res.sendFile(path.join(__dirname, '../', 'views', 'successfullyAdd.html'));
+    res.sendFile(path.join(__dirname, '../', 'views', 'successfullAdd.html'));
 })
 
 module.exports = hostRouter;
