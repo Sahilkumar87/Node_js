@@ -7,10 +7,13 @@ const express = require('express');
 
 //local module
 const userRouter = require('./routes/userRouter');
-const {hostRouter} = require('./routes/hostRouter');
+const { hostRouter } = require('./routes/hostRouter');
 const rootDir = require('./utils/pathUtils');
 
 const app = express();
+
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
 app.use((req, res, next) => {
     console.log(req.url, req.method);
