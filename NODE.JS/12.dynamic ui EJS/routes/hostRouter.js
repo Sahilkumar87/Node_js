@@ -6,7 +6,7 @@ const hostRouter = express.Router();
 
 
 hostRouter.get("/add/home", (req, res, next) => {
-    res.sendFile(path.join(__dirname, "../", 'views', 'addHome.html'));
+    res.render('addHome', {pageTitle: "Add Home to airbnb"});
 })
 
 const registerHome = [];
@@ -14,7 +14,7 @@ const registerHome = [];
 hostRouter.post("/add/home", (req, res, next) => {
     console.log("Home Registration successful for: ", req.body, req.body.houseName);
     registerHome.push({houseName: req.body.houseName});
-    res.sendFile(path.join(__dirname, '../', 'views', 'successfullAdd.html'));
+    res.render('successfullAdd', {pageTitle: "Home Added Successfully"});
 })
 
 exports.hostRouter = hostRouter;

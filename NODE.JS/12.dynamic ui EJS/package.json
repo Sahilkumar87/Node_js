@@ -11,7 +11,10 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "ejs": "^6.0.1",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "postcss": "^8.5.22",
+    "tailwindcss": "^4.3.3"
   }
 }
