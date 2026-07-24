@@ -4,7 +4,7 @@ const path = require('path');
 const rootDir = require('../utils/pathUtils/');
 
 // fake databases
-const registerHome = [];
+let registerHome = [];
 
 
 module.exports = class Home {
@@ -13,17 +13,25 @@ module.exports = class Home {
     }
 
     save(){
-        registerHome.push(this);
-        const homeDataPath = path.join(rootDir, "data", "home.json");
-        fs.writeFile(homeDataPath, JSON.stringify(registerHome), (error) => {
+        fetch(registerHome => {
+            registerHome.push(this);
+            const homeDataPath = path.join(rootDir, "data", "home.json");
+            fs.writeFile(homeDataPath, JSON.stringify(registerHome), (error) => {
             console.log("File writing conclude", error);
+
+        });
         });
 
         
     }
 
-    static fetchAll(){
-        return registerHome;
+    static fetchAll(callback){
+        const homeDataPath = path.join(rootDir, "data", "home.json");
+        fs.readFile(homeDataPath, (err, data) => {
+            console.log("File read: ", err, data);
+            callback(!err ? JSON.parse(data) : []);
+        })
+
     }
 
 }
