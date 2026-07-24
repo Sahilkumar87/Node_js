@@ -20,7 +20,7 @@ module.exports = class Home {
             console.log("File writing conclude", error);
 
         });
-        });
+     });
 
         
     }
