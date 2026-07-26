@@ -1,1 +1,3 @@
-[{},{"houseName":"222","price":"299","location":"h-hostel","rating":"4","photoUrl":"https://www.vecteezy.com/free-photos/simple-house"}]
+[{"id":"1","houseName":"222","price":"299","location":"h-hostel","rating":"4","photoUrl":"https://images.pexels.com/photos/33213827/pexels-photo-33213827.jpeg"},
+{"id":"2","houseName":"tej","price":"199","location":"arya","rating":"5","photoUrl":"https://images.pexels.com/photos/16370153/pexels-photo-16370153.jpeg"},
+{"houseName":"fair mount","price":"1999","location":"kukas","rating":"4","photoUrl":"/jps/int","id":"0.06194180211746114"}]
