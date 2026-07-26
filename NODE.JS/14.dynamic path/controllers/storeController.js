@@ -1,3 +1,4 @@
+const Fav = require("../models/fav");
 const Home = require("../models/home");
 
 exports.getIndex = (req, res, next) => {
@@ -28,14 +29,28 @@ exports.getBookings = (req, res, next) => {
 };
 
 exports.getFavouriteList = (req, res, next) => {
-  Home.fetchAll((registeredHomes) =>
+  Fav.getFav(favourites => {
+  Home.fetchAll((registeredHomes) =>{
+    const favHomes = registeredHomes.filter(home => favourites.includes(home.id));
     res.render("store/favourite-list", {
-      registeredHomes: registeredHomes,
+      favHomes: favHomes,
       pageTitle: "My Favourites",
       currentPage: "favourites",
     })
-  );
+});
+    
+  })
 };
+
+exports.postAddToFavourite = (req, res, next) => {
+  console.log("came to add to favourite",req.body);
+  Fav.addToFav(req.body.id, error => {
+    if(error){
+      console.log("error while marking favourite", error);
+    }
+  res.redirect("/favourites");
+  })
+}
 
 
 exports.getHomeDetails = (req, res, next) => {
@@ -52,8 +67,9 @@ exports.getHomeDetails = (req, res, next) => {
       home: home,
       pageTitle: "home detail",
       currentPage: "Home",
-    })
-
-    }
+    });
+    };
   })
 };
+
+
