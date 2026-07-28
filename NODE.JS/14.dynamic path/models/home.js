@@ -23,7 +23,7 @@ module.exports = class Home {
         home.id === this.id ? this : home
       )
     }
-    else{
+    else{ // add home case
       this.id = Math.random().toString();
       registeredHomes.push(this);
       
@@ -46,4 +46,15 @@ module.exports = class Home {
       callback(homeFound);
     })
   }
+
+  
+  static deleteById(homeId, callback){
+    this.fetchAll(homes => {
+      homes = homes.filter(home => home.id !== homeId);
+      fs.writeFile(homeDataPath, JSON.stringify(homes), callback);
+    })
+  }
+
+
+
 };
