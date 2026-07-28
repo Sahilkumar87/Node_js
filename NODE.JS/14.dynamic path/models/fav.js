@@ -26,11 +26,10 @@ module.exports = class Fav {
     });
   }
 
-    static deleteById(homeId, callback){
-    Fav.getFav(homes => {
-      homes = homes.filter(homeIds => home.id !== homeId);
-      fs.writeFile(homeDataPath, JSON.stringify(homes), callback);
+    static deleteById(delHomeId, callback){
+    Fav.getFav(homeIds => {
+      homeIds = homeIds.filter(homeId => delHomeId !== homeId);
+      fs.writeFile(favDataPath, JSON.stringify(homeIds), callback);
     })
   }
-
 };
