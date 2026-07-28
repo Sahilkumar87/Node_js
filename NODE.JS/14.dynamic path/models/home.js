@@ -16,9 +16,18 @@ module.exports = class Home {
   
 
   save() {
-    this.id = Math.random().toString();
     Home.fetchAll((registeredHomes) => {
+
+    if(this.id){ // edit home case
+      registeredHomes = registeredHomes.map(home => 
+        home.id === this.id ? this : home
+      )
+    }
+    else{
+      this.id = Math.random().toString();
       registeredHomes.push(this);
+      
+    }
       fs.writeFile(homeDataPath, JSON.stringify(registeredHomes), (error) => {
         console.log("File Writing Concluded", error);
       });
