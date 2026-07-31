@@ -14,9 +14,20 @@ module.exports = class Home {
   }
 
   save() {
-    return db.execute(`INSERT INTO homes(houseName, price, location, rating, photoUrl, description) 
+
+    if(this.id){ // update
+      return db.execute(`UPDATE homes SET (houseName=?, price=?, location=?, rating=?, photoUrl=?, description=? WHERE id=?`,
+      [this.houseName, this.price, this.location,this.rating, this.photoUrl, this.description]);
+
+
+    }
+    else{ // insert
+      return db.execute(`INSERT INTO homes(houseName, price, location, rating, photoUrl, description) 
       VALUE(?, ?, ?, ?, ?, ?)`,
       [this.houseName, this.price, this.location,this.rating, this.photoUrl, this.description]);
+
+    }
+    
   }
 
   static fetchAll() {
