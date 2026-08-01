@@ -1,5 +1,5 @@
 // Core Modules
-const db = require("./utils/databaseUtil");
+const db = require("./utils/databaseUtil");  // learning mongoDb
 
 const homeDataPath = path.join(rootDir, "data", "homes.json");
 module.exports = class Home {
