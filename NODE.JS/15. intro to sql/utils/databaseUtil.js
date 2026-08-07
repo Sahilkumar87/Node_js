@@ -1,10 +1,5 @@
-const mysql = require('mysql2');
+const mongo = require('mongodb');
 
-const pool = mysql.createPool({
-    host: "localhost:5555",
-    user: "root",
-    password: "sahilkumar@8781",
-    database: "airbnb"
-});
+const MongoClient = mongo.MongoClient();
 
-module.exports = pool.promise();
+const  
