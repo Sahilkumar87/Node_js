@@ -18,7 +18,7 @@ exports.postHomeAdd =  (req, res, next) => {
 
 
 exports.getHome = (req, res, next) => {
-    const registerHome = Home.fetchAll();
+    const registerHome = Home.find();
     console.log(registerHome);
     res.render('home', {registerHome: registerHome, pageTile: "airbnb Home"});
 }

@@ -30,7 +30,7 @@ module.exports = class Home {
     
   }
 
-  static fetchAll() {
+  static find() {
     return db.execute("SELECT * FROM homes");
   }
 

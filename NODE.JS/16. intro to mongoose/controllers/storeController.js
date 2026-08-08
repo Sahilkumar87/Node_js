@@ -2,7 +2,7 @@ const Fav = require("../models/fav");
 const Home = require("../models/home");
 
 exports.getIndex = (req, res, next) => {
-  Home.fetchAll().then(([registeredHomes, fields]) => {
+  Home.find().then(([registeredHomes, fields]) => {
 
     res.render("store/index", {
       registeredHomes: registeredHomes,
@@ -13,7 +13,7 @@ exports.getIndex = (req, res, next) => {
 };
 
 exports.getHomes = (req, res, next) => {
-  Home.fetchAll().then(([registeredHomes, fields]) => {
+  Home.find().then(([registeredHomes, fields]) => {
     res.render("store/home-list", {
       registeredHomes: registeredHomes,
       pageTitle: "Homes List",
@@ -31,7 +31,7 @@ exports.getBookings = (req, res, next) => {
 
 exports.getFavouriteList = (req, res, next) => {
   Fav.getFav(favourites => {
- Home.fetchAll().then(([registeredHomes, fields]) => {
+ Home.find().then(([registeredHomes, fields]) => {
     const favHomes = registeredHomes.filter(home => favourites.includes(home.id));
     res.render("store/favourite-list", {
       favHomes: favHomes,

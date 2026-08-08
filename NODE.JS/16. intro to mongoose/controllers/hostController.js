@@ -29,7 +29,7 @@ exports.getEditHome = (req, res, next) => {
 };
 
 exports.getHostHomes = (req, res, next) => {
-  Home.fetchAll().then(([registeredHomes, fields]) => {
+  Home.find().then(([registeredHomes, fields]) => {
     res.render("host/host-home-list", {
       registeredHomes: registeredHomes,
       pageTitle: "Host Homes List",
@@ -40,7 +40,7 @@ exports.getHostHomes = (req, res, next) => {
 
 exports.postAddHome = (req, res, next) => {
   const { houseName, price, location, rating, photoUrl, description } = req.body;
-  const home = new Home(houseName, price, location, rating, photoUrl, description);
+  const home = new Home({houseName, price, location, rating, photoUrl, description});
   home.save();
 
   res.redirect("/host/host-home-list")
