@@ -2,6 +2,7 @@
 const db = require("./utils/databaseUtil");  // learning mongoDb
 const mongoose = require('mongoose');
 const {ObjectId} = require('mongodb');
+const fav = require("./fav");
 
 const homeSchema = mongoose.Schema({
   houseName: {
@@ -33,6 +34,11 @@ const homeSchema = mongoose.Schema({
 
 });
 
+homeSchema.pre('findOneAndDelete', async function(next) {
+  const homeId = this.getQuery()._id;
+  await fav.deleteMany({houseId: homeId});
+  next();
+})
 
 module.exports = mongoose.model('Home', homeSchema);
 
