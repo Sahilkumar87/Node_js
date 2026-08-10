@@ -40,6 +40,9 @@ exports.getFavouriteList = (req, res, next) => {
       currentPage: "favourites",
     })
 });
+
+
+
     
   })
 };
